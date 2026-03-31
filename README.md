@@ -1,6 +1,10 @@
 # Selenium POM Framework
 
-Selenium POM Framework with TestNG and Maven.
+[![Test Status](https://github.com/TienDattttt/selenium--framework/actions/workflows/selenium-full.yml/badge.svg)](https://github.com/TienDattttt/selenium--framework/actions)
+[![Allure Report](https://img.shields.io/badge/Allure-Report-orange)](https://TienDattttt.github.io/selenium--framework/)
+
+## Mo ta
+Selenium 4 + TestNG + Page Object Model framework voi CI/CD tu dong.
 
 ## Requirements
 

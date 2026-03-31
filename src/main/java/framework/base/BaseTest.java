@@ -2,10 +2,12 @@ package framework.base;
 
 import framework.config.ConfigReader;
 import framework.driver.DriverFactory;
-import framework.utils.ScreenshotUtil;
 import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
 import java.io.ByteArrayInputStream;
 import java.time.Duration;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -34,25 +36,38 @@ public abstract class BaseTest {
 
         WebDriver driver = DriverFactory.createDriver(requestedBrowser);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+        String gridUrl = System.getProperty("grid.url", "");
+        if (gridUrl == null || gridUrl.isBlank()) {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        }
+
         driver.get(configReader.getBaseUrl());
         tlDriver.set(driver);
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult result) {
-        WebDriver driver = getDriver();
         try {
-            if (driver != null && result.getStatus() == ITestResult.FAILURE) {
-                ScreenshotUtil.capture(driver, result.getName());
-                Allure.addAttachment("Screenshot", new ByteArrayInputStream(ScreenshotUtil.captureAsBytes(driver)));
+            if (result.getStatus() == ITestResult.FAILURE) {
+                attachScreenshotOnFailure(getDriver());
             }
         } finally {
-            if (driver != null) {
-                driver.quit();
+            if (getDriver() != null) {
+                getDriver().quit();
             }
             tlDriver.remove();
         }
+    }
+
+    /**
+     * Attaches a PNG screenshot to Allure when the test fails.
+     */
+    @Attachment(value = "Screenshot on Failure", type = "image/png")
+    public byte[] attachScreenshotOnFailure(WebDriver driver) {
+        byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Screenshot on Failure", "image/png", new ByteArrayInputStream(screenshot), ".png");
+        return screenshot;
     }
 
     private String getSystemPropertyOrDefault(String key, String fallbackValue) {

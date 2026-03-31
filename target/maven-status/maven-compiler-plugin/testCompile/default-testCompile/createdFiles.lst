@@ -1,2 +1,4 @@
+tests\CartTest.class
 framework\base\BaseTest.class
+tests\LoginTest.class
 tests\SampleParallelTest.class

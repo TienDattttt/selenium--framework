@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="3" passed="2" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-04-01T00:01:17 ICT" name="SmokeSuite" finished-at="2026-04-01T00:01:20 ICT" duration-ms="3170">
+  <suite started-at="2026-04-01T01:18:30 ICT" name="SmokeSuite" finished-at="2026-04-01T01:18:33 ICT" duration-ms="3101">
     <groups>
     </groups>
-    <test started-at="2026-04-01T00:01:17 ICT" name="Smoke Verification" finished-at="2026-04-01T00:01:20 ICT" duration-ms="3170">
+    <test started-at="2026-04-01T01:18:30 ICT" name="Smoke Tests" finished-at="2026-04-01T01:18:33 ICT" duration-ms="3101">
       <class name="tests.SampleParallelTest">
-        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:tests.SampleParallelTest@173ed316]" started-at="2026-04-01T00:01:17 ICT" name="setUp" finished-at="2026-04-01T00:01:19 ICT" duration-ms="1710" status="PASS">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:tests.SampleParallelTest@5d0bf09b]" started-at="2026-04-01T01:18:30 ICT" name="setUp" finished-at="2026-04-01T01:18:31 ICT" duration-ms="1726" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -23,7 +23,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:tests.SampleParallelTest@173ed316]" started-at="2026-04-01T00:01:17 ICT" name="setUp" finished-at="2026-04-01T00:01:19 ICT" duration-ms="1773" status="PASS">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:tests.SampleParallelTest@5d0bf09b]" started-at="2026-04-01T01:18:30 ICT" name="setUp" finished-at="2026-04-01T01:18:31 ICT" duration-ms="1793" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -39,11 +39,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testLogin_Success()[pri:0, instance:tests.SampleParallelTest@173ed316]" started-at="2026-04-01T00:01:19 ICT" name="testLogin_Success" finished-at="2026-04-01T00:01:19 ICT" duration-ms="28" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testLogin_Success -->
-        <test-method signature="testLogin_Fail_TakeScreenshot()[pri:0, instance:tests.SampleParallelTest@173ed316]" started-at="2026-04-01T00:01:19 ICT" name="testLogin_Fail_TakeScreenshot" finished-at="2026-04-01T00:01:19 ICT" duration-ms="8" status="FAIL">
+        <test-method signature="testLogin_Fail_TakeScreenshot()[pri:0, instance:tests.SampleParallelTest@5d0bf09b]" started-at="2026-04-01T01:18:31 ICT" name="testLogin_Fail_TakeScreenshot" finished-at="2026-04-01T01:18:32 ICT" duration-ms="33" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[Intentional fail expected [true] but found [false]]]>
@@ -76,29 +72,33 @@ at java.base/java.lang.Thread.run(Thread.java:1583)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testLogin_Fail_TakeScreenshot -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:tests.SampleParallelTest@173ed316]" started-at="2026-04-01T00:01:19 ICT" name="tearDown" finished-at="2026-04-01T00:01:19 ICT" duration-ms="108" status="PASS">
+        <test-method signature="testLogin_Success()[pri:0, instance:tests.SampleParallelTest@5d0bf09b]" started-at="2026-04-01T01:18:31 ICT" name="testLogin_Success" finished-at="2026-04-01T01:18:32 ICT" duration-ms="24" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLogin_Success -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:tests.SampleParallelTest@5d0bf09b]" started-at="2026-04-01T01:18:32 ICT" name="tearDown" finished-at="2026-04-01T01:18:32 ICT" duration-ms="108" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testLogin_Success status=SUCCESS method=SampleParallelTest.testLogin_Success()[pri:0, instance:tests.SampleParallelTest@173ed316] output={null}]]]>
+                <![CDATA[[TestResult name=testLogin_Success status=SUCCESS method=SampleParallelTest.testLogin_Success()[pri:0, instance:tests.SampleParallelTest@5d0bf09b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:tests.SampleParallelTest@173ed316]" started-at="2026-04-01T00:01:19 ICT" name="tearDown" finished-at="2026-04-01T00:01:19 ICT" duration-ms="180" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:tests.SampleParallelTest@5d0bf09b]" started-at="2026-04-01T01:18:32 ICT" name="tearDown" finished-at="2026-04-01T01:18:32 ICT" duration-ms="203" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testLogin_Fail_TakeScreenshot status=FAILURE method=SampleParallelTest.testLogin_Fail_TakeScreenshot()[pri:0, instance:tests.SampleParallelTest@173ed316] output={null}]]]>
+                <![CDATA[[TestResult name=testLogin_Fail_TakeScreenshot status=FAILURE method=SampleParallelTest.testLogin_Fail_TakeScreenshot()[pri:0, instance:tests.SampleParallelTest@5d0bf09b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:tests.SampleParallelTest@173ed316]" started-at="2026-04-01T00:01:19 ICT" name="setUp" finished-at="2026-04-01T00:01:20 ICT" duration-ms="1150" status="PASS">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:tests.SampleParallelTest@5d0bf09b]" started-at="2026-04-01T01:18:32 ICT" name="setUp" finished-at="2026-04-01T01:18:33 ICT" duration-ms="1019" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -114,15 +114,15 @@ at java.base/java.lang.Thread.run(Thread.java:1583)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testTitle_Check()[pri:0, instance:tests.SampleParallelTest@173ed316]" started-at="2026-04-01T00:01:20 ICT" name="testTitle_Check" finished-at="2026-04-01T00:01:20 ICT" duration-ms="5" status="PASS">
+        <test-method signature="testTitle_Check()[pri:0, instance:tests.SampleParallelTest@5d0bf09b]" started-at="2026-04-01T01:18:33 ICT" name="testTitle_Check" finished-at="2026-04-01T01:18:33 ICT" duration-ms="7" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testTitle_Check -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:tests.SampleParallelTest@173ed316]" started-at="2026-04-01T00:01:20 ICT" name="tearDown" finished-at="2026-04-01T00:01:20 ICT" duration-ms="77" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:tests.SampleParallelTest@5d0bf09b]" started-at="2026-04-01T01:18:33 ICT" name="tearDown" finished-at="2026-04-01T01:18:33 ICT" duration-ms="102" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testTitle_Check status=SUCCESS method=SampleParallelTest.testTitle_Check()[pri:0, instance:tests.SampleParallelTest@173ed316] output={null}]]]>
+                <![CDATA[[TestResult name=testTitle_Check status=SUCCESS method=SampleParallelTest.testTitle_Check()[pri:0, instance:tests.SampleParallelTest@5d0bf09b] output={null}]]]>
               </value>
             </param>
           </params>
@@ -130,6 +130,6 @@ at java.base/java.lang.Thread.run(Thread.java:1583)
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- tests.SampleParallelTest -->
-    </test> <!-- Smoke Verification -->
+    </test> <!-- Smoke Tests -->
   </suite> <!-- SmokeSuite -->
 </testng-results>
