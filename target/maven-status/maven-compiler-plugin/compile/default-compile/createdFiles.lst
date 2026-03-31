@@ -1,0 +1,4 @@
+framework\base\BasePage.class
+framework\driver\DriverFactory.class
+framework\utils\ScreenshotUtil.class
+framework\config\ConfigReader.class

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <mkdir dir="D:\Ki2Nam4\Testing\Testing_Lab\selenium--framework\target/generated-test-sources/framework/base" />
+    <copy file="D:\Ki2Nam4\Testing\Testing_Lab\selenium--framework/src/main/java/framework/base/BaseTest.java" tofile="D:\Ki2Nam4\Testing\Testing_Lab\selenium--framework\target/generated-test-sources/framework/base/BaseTest.java" overwrite="true" />
+  </target>
+</project>
