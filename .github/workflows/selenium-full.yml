@@ -63,6 +63,14 @@ jobs:
           name: allure-results-firefox
           path: allure-results/
 
+      - name: Checkout gh-pages history
+        if: always()
+        continue-on-error: true
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+
       - name: Verify merged results
         run: |
           echo "=== Allure results count ==="
