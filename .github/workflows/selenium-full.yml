@@ -51,17 +51,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
       - name: Download Allure results - Chrome
         uses: actions/download-artifact@v4
         with:
           name: allure-results-chrome
-          path: allure-results/
+          path: target/allure-results/
 
       - name: Download Allure results - Firefox
         uses: actions/download-artifact@v4
         with:
           name: allure-results-firefox
-          path: allure-results/
+          path: target/allure-results/
 
       - name: Checkout gh-pages history
         if: always()
@@ -71,20 +78,24 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
+      - name: Restore Allure history
+        if: always()
+        shell: bash
+        run: |
+          if [ -d gh-pages/history ]; then
+            mkdir -p target/allure-results/history
+            cp -r gh-pages/history/. target/allure-results/history/
+          fi
+
       - name: Verify merged results
+        shell: bash
         run: |
           echo "=== Allure results count ==="
-          ls allure-results/ | wc -l
-          ls allure-results/ | head -10
+          ls target/allure-results/ | wc -l
+          ls target/allure-results/ | head -10
 
-      - name: Generate Allure Report history
-        uses: simple-elf/allure-report-action@v1.7
-        with:
-          allure_results: allure-results
-          gh_pages: gh-pages
-          allure_report: allure-report
-          allure_history: allure-history
-          keep_reports: 20
+      - name: Generate Allure report
+        run: mvn -B -DskipTests allure:report
 
       - name: Deploy Allure Report to gh-pages
         if: always()
@@ -92,4 +103,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: allure-history
+          publish_dir: target/site/allure-maven-plugin
