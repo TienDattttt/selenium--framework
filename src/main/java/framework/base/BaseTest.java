@@ -23,10 +23,14 @@ public abstract class BaseTest {
     @BeforeMethod(alwaysRun = true)
     @Parameters({"browser", "env"})
     public void setUp(@Optional("chrome") String browser, @Optional("dev") String env) {
-        System.setProperty("env", env);
+        String requestedEnv = getSystemPropertyOrDefault("env", env);
+        System.setProperty("env", requestedEnv);
 
         ConfigReader configReader = ConfigReader.getInstance();
-        String requestedBrowser = browser == null || browser.isBlank() ? configReader.getBrowser() : browser;
+        String requestedBrowser = getSystemPropertyOrDefault("browser", browser);
+        if (requestedBrowser == null || requestedBrowser.isBlank()) {
+            requestedBrowser = configReader.getBrowser();
+        }
 
         WebDriver driver = DriverFactory.createDriver(requestedBrowser);
         driver.manage().window().maximize();
@@ -49,5 +53,13 @@ public abstract class BaseTest {
             }
             tlDriver.remove();
         }
+    }
+
+    private String getSystemPropertyOrDefault(String key, String fallbackValue) {
+        String value = System.getProperty(key);
+        if (value == null || value.isBlank()) {
+            return fallbackValue;
+        }
+        return value;
     }
 }

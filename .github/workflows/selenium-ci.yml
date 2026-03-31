@@ -20,6 +20,11 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        browser: [chrome, firefox]
+      fail-fast: false
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -45,17 +50,22 @@ jobs:
           echo "INTENTIONAL_FAIL=$INTENTIONAL_FAIL" >> "$GITHUB_ENV"
           echo "[CI] intentional.fail=$INTENTIONAL_FAIL"
 
-      - name: Run Selenium Smoke Tests
-        run: mvn clean test -Dbrowser=chrome -Denv=dev -DsuiteXmlFile=testng-smoke.xml -Dintentional.fail=${INTENTIONAL_FAIL}
+      - name: Run Selenium Smoke Tests (${{ matrix.browser }})
+        run: |
+          mvn clean test \
+            -Dbrowser=${{ matrix.browser }} \
+            -Denv=dev \
+            -DsuiteXmlFile=testng-smoke.xml \
+            -Dintentional.fail=${INTENTIONAL_FAIL}
         env:
           APP_PASSWORD: ${{ secrets.SAUCEDEMO_PASSWORD }}
           APP_USERNAME: ${{ secrets.SAUCEDEMO_USERNAME }}
 
-      - name: Upload test artifacts
+      - name: Upload test artifacts (${{ matrix.browser }})
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-results
+          name: test-results-${{ matrix.browser }}
           path: |
             target/surefire-reports/
             target/screenshots/
