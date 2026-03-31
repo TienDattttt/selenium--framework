@@ -1,0 +1,9 @@
+<suite name="SmokeSuite" parallel="methods" thread-count="2">
+    <test name="Smoke Verification">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="env" value="dev"/>
+        <classes>
+            <class name="tests.SampleParallelTest"/>
+        </classes>
+    </test>
+</suite>
