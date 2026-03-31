@@ -61,6 +61,30 @@ public final class ConfigReader {
         return getRequiredProperty("screenshot.path");
     }
 
+    /**
+     * Reads username from APP_USERNAME first for CI/CD, then falls back to app.username
+     * in config for local execution. Never returns null.
+     */
+    public String getUsername() {
+        String value = System.getenv("APP_USERNAME");
+        if (value == null || value.isBlank()) {
+            value = properties.getProperty("app.username", "");
+        }
+        return value;
+    }
+
+    /**
+     * Reads password from APP_PASSWORD first for CI/CD, then falls back to app.password
+     * in config for local execution. Never returns null.
+     */
+    public String getPassword() {
+        String value = System.getenv("APP_PASSWORD");
+        if (value == null || value.isBlank()) {
+            value = properties.getProperty("app.password", "");
+        }
+        return value;
+    }
+
     private String getRequiredProperty(String key) {
         String value = properties.getProperty(key);
         if (value == null || value.isBlank()) {

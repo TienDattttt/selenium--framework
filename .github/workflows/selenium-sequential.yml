@@ -15,6 +15,9 @@ jobs:
           cache: maven
       - name: Run Chrome Tests
         run: mvn clean test -Dbrowser=chrome -Denv=dev -DsuiteXmlFile=testng-smoke.xml
+        env:
+          APP_USERNAME: ${{ secrets.SAUCEDEMO_USERNAME }}
+          APP_PASSWORD: ${{ secrets.SAUCEDEMO_PASSWORD }}
 
   run-firefox:
     runs-on: ubuntu-latest
@@ -28,3 +31,6 @@ jobs:
           cache: maven
       - name: Run Firefox Tests
         run: mvn clean test -Dbrowser=firefox -Denv=dev -DsuiteXmlFile=testng-smoke.xml
+        env:
+          APP_USERNAME: ${{ secrets.SAUCEDEMO_USERNAME }}
+          APP_PASSWORD: ${{ secrets.SAUCEDEMO_PASSWORD }}
