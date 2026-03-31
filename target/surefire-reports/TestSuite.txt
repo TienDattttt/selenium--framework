@@ -1,13 +1,13 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 5.975 s <<< FAILURE! -- in TestSuite
-tests.SampleParallelTest.testLogin_Fail_TakeScreenshot -- Time elapsed: 0.068 s <<< FAILURE!
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 3.578 s <<< FAILURE! -- in TestSuite
+tests.SampleParallelTest.testLogin_Fail_TakeScreenshot -- Time elapsed: 0.021 s <<< FAILURE!
 java.lang.AssertionError: Intentional fail expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:111)
 	at org.testng.Assert.failNotEquals(Assert.java:1578)
 	at org.testng.Assert.assertTrue(Assert.java:57)
-	at tests.SampleParallelTest.testLogin_Fail_TakeScreenshot(SampleParallelTest.java:15)
+	at tests.SampleParallelTest.testLogin_Fail_TakeScreenshot(SampleParallelTest.java:16)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)

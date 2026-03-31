@@ -6,6 +6,15 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
+    inputs:
+      intentional_fail:
+        description: 'Set true to force the intentional failing test'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
 
 jobs:
   run-tests:
@@ -22,8 +31,22 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      - name: Resolve pipeline mode
+        shell: bash
+        run: |
+          INTENTIONAL_FAIL="false"
+
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.intentional_fail }}" == "true" ]]; then
+            INTENTIONAL_FAIL="true"
+          elif [[ "${{ github.event_name }}" == "push" && "${{ github.event.head_commit.message }}" == *"[red-ci]"* ]]; then
+            INTENTIONAL_FAIL="true"
+          fi
+
+          echo "INTENTIONAL_FAIL=$INTENTIONAL_FAIL" >> "$GITHUB_ENV"
+          echo "[CI] intentional.fail=$INTENTIONAL_FAIL"
+
       - name: Run Selenium Smoke Tests
-        run: mvn clean test -Dbrowser=chrome -Denv=dev -DsuiteXmlFile=testng-smoke.xml
+        run: mvn clean test -Dbrowser=chrome -Denv=dev -DsuiteXmlFile=testng-smoke.xml -Dintentional.fail=${INTENTIONAL_FAIL}
         env:
           APP_PASSWORD: ${{ secrets.SAUCEDEMO_PASSWORD }}
           APP_USERNAME: ${{ secrets.SAUCEDEMO_USERNAME }}

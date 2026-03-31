@@ -19,3 +19,9 @@ mvn test -Denv=dev -Dbrowser=chrome -DsuiteXmlFile=testng-parallel.xml
 ```bash
 mvn test -Denv=staging
 ```
+
+## CI Evidence Flow
+
+- Push a normal commit to get a green pipeline.
+- Push a commit with `[red-ci]` in the commit message to force the intentional failing test and get a red pipeline with uploaded artifacts.
+- You can also use `workflow_dispatch` and set `intentional_fail=true` for a manual red run.

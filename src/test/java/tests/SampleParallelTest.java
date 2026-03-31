@@ -12,7 +12,8 @@ public class SampleParallelTest extends BaseTest {
 
     @Test
     public void testLogin_Fail_TakeScreenshot() {
-        Assert.assertTrue(false, "Intentional fail");
+        boolean intentionalFail = Boolean.parseBoolean(System.getProperty("intentional.fail", "false"));
+        Assert.assertTrue(!intentionalFail, "Intentional fail");
     }
 
     @Test
